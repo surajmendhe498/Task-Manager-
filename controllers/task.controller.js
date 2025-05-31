@@ -30,13 +30,13 @@ const getTasks= async(req, res)=>{
             res.status(200).json({message: 'All tasks fetched successfully', tasks:tasks});
         }
         else {
-            const task= await Task.find({user: req.user.id});
+            const tasks= await Task.find({user: req.user.id});
 
-            if(task.length == 0){
+            if(tasks.length == 0){
                 return res.status(404).json({message: 'Task not found'});
             }
 
-            res.status(200).json({message: 'Your task fetched successfully', task:task});
+            res.status(200).json({message: 'Your task fetched successfully', tasks:tasks});
         }
         
     } catch (error) {
